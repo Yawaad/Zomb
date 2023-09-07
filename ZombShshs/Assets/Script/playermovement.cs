@@ -34,7 +34,7 @@ public class playermovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
           GameObject Bulletspawned =   Instantiate(Bullet);
-          Bulletspawned.transform.position = new Vector2(PlayerPosition.x+ 0.75f, PlayerPosition.y+ 0.13f);
+          Bulletspawned.transform.position = new Vector2(PlayerPosition.x+ 1.5f, PlayerPosition.y+ 0.13f);
             
         }
     }
