@@ -1,41 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class playermovement : MonoBehaviour
 {
-    
-    Vector3 Direction;
-    [SerializeField] int speed;
+
     Rigidbody2D rb;
-    float Xaxis;
-    float Yaxis;
-    [SerializeField] GameObject Bullet;
-    Vector2 PlayerPosition;
+    WeaponParent bulletdirection;
+
+    [SerializeField] GameObject BulletPF;
+    [SerializeField] Transform WeaponEnd;
+    [SerializeField] Transform BulletDirection;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-       
+
+        bulletdirection = GetComponent<WeaponParent>();
+
     }
 
-    void Update()
+    public void Move(InputAction.CallbackContext button)
     {
-        Xaxis = Input.GetAxisRaw("Horizontal");
-        Yaxis = Input.GetAxisRaw("Vertical");
-
-       Direction =  new Vector2(Xaxis, Yaxis).normalized;
-
-      transform.position += Direction * speed * Time.deltaTime;
-    }
-
-    private void FixedUpdate()
-    {
-        PlayerPosition = transform.position;
-        if (Input.GetMouseButtonDown(0))
+        if(button.performed)
         {
-          GameObject Bulletspawned =   Instantiate(Bullet);
-          Bulletspawned.transform.position = new Vector2(PlayerPosition.x+ 1.5f, PlayerPosition.y+ 0.13f);
-            
+            Vector2 direction = button.ReadValue<Vector2>().normalized;
+            rb.velocity = new Vector2(direction.x, direction.y).normalized * 5;
+            Debug.Log(direction);
         }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
+        
     }
+
+    public void shoot(InputAction.CallbackContext button)
+    {
+        if (button.performed)
+        {
+           Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
+           
+        }
+           
+    }
+
+
+   
+       
+
+   
+            
+     
+    
 }

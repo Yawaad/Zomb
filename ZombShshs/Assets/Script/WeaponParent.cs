@@ -6,11 +6,12 @@ public class WeaponParent : MonoBehaviour
 {
     // this is to store the position of the pointer (used to aim the weapon).
     public Vector2 PointerPosition { get; set; }
+    public Vector3 direction;
 
     private void Update()
     {
         // Calculate the direction from the weapon's position to the pointer position.
-        Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
+         direction = (PointerPosition - (Vector2)transform.position).normalized;
 
         // Set the weapon's forward direction to point in the calculated direction.
         transform.right = direction;

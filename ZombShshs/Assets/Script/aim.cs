@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour
+public class aim : MonoBehaviour
 {
     // Reference to an InputAction asset that provides pointer position information.
     [SerializeField] InputActionReference pointerPosition;
@@ -33,7 +33,7 @@ public class PlayerInput : MonoBehaviour
     }
 
     // Function to retrieve the pointer input.
-    private Vector2 GetPointerInput()
+    public Vector2 GetPointerInput()
     {
         // Read the input value from the pointerPosition InputActionReference.
         Vector3 mousePos = pointerPosition.action.ReadValue<Vector2>();
