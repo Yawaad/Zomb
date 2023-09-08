@@ -8,6 +8,7 @@ public class playermovement : MonoBehaviour
 
     Rigidbody2D rb;
     WeaponParent bulletdirection;
+    WeaponParent weaponParent;
     //to get the bullet prefab for instantiation
     [SerializeField] GameObject BulletPF;
     //to get the posiiton and rotation of the bullet
@@ -19,6 +20,7 @@ public class playermovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         bulletdirection = GetComponent<WeaponParent>();
+        weaponParent = GetComponentInChildren<WeaponParent>();
 
     }
 
@@ -41,18 +43,24 @@ public class playermovement : MonoBehaviour
     {
         if (button.performed)
         {
-           Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation); //create a bullet
-           
+            // Instantiate the bullet
+            GameObject bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
+
+            // Calculate the direction from the bullet's position to the pointer position
+            Vector2 direction = (weaponParent.PointerPosition - (Vector2)bullet.transform.position).normalized;
+
+            // Set the bullet's velocity to move in that direction with a desired speed
+            float bulletSpeed = 10f; // Adjust this speed as needed
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         }
-           
     }
 
 
-   
-       
 
-   
-            
-     
-    
+
+
+
+
+
+
 }
