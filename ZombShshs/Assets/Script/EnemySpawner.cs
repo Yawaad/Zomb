@@ -5,9 +5,13 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject Enemy;
-    private void Update()
+    private void Start()
     {
-        var Position = new Vector2(Random.Range(-20,20), Random.Range(-20,20));
+        InvokeRepeating("SpawnEnemy", 0, 1f); 
+    }
+    void SpawnEnemy()
+    {
+        var Position = new Vector2(Random.Range(-20, 20), Random.Range(-20, 20));
         Instantiate(Enemy, Position, Quaternion.identity);
         
     }
