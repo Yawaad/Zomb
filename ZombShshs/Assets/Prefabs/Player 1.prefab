@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0440aa583a3f24181370f7ba470a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &2877414410032273916
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 4978751125485650239}
   m_Layer: 0
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
   BulletPF: {fileID: 860769962901709881, guid: db67d33b18b5a124c8f1eb1fc5f94a90, type: 3}
   WeaponEnd: {fileID: 4542261716070451306}
   BulletDirection: {fileID: 3081400996026848985}
+  Speed: 10
 --- !u!114 &4650183753475173884
 MonoBehaviour:
   m_ObjectHideFlags: 0
