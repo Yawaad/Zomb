@@ -17,6 +17,7 @@ public class playermovement : MonoBehaviour
     [SerializeField] Transform WeaponEnd;
     [SerializeField] Transform BulletDirection;
     [SerializeField] float Speed;
+    [SerializeField] AudioSource ShootSFX;
     
     void Start()
     {
@@ -48,6 +49,9 @@ public class playermovement : MonoBehaviour
         {
             // Instantiate the bullet
              bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
+
+            // Play Sound Effect
+            ShootSFX.Play();
 
             // Calculate the direction from the bullet's position to the pointer position
             Vector2 direction = (weaponParent.PointerPosition - (Vector2)bullet.transform.position).normalized;
