@@ -8,8 +8,8 @@ public class playermovement : MonoBehaviour
 {
 
     Rigidbody2D rb;
-    WeaponParent bulletdirection;
-    WeaponParent weaponParent;
+    WeaponMovement bulletdirection;
+    WeaponMovement WeaponMovement;
     GameObject bullet;
     //to get the bullet prefab for instantiation
     [SerializeField] GameObject BulletPF;
@@ -18,16 +18,21 @@ public class playermovement : MonoBehaviour
     [SerializeField] Transform BulletDirection;
     [SerializeField] float Speed;
     [SerializeField] AudioSource ShootSFX;
-    
+   
+     
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        bulletdirection = GetComponent<WeaponParent>();
-        weaponParent = GetComponentInChildren<WeaponParent>();
+        bulletdirection = GetComponent<WeaponMovement>();
+        WeaponMovement = GetComponentInChildren<WeaponMovement>();
 
     }
 
+
+   
     public void Move(InputAction.CallbackContext button)
     {
         if(button.performed) //if the button for movement is clicked
@@ -54,7 +59,7 @@ public class playermovement : MonoBehaviour
             ShootSFX.Play();
 
             // Calculate the direction from the bullet's position to the pointer position
-            Vector2 direction = (weaponParent.PointerPosition - (Vector2)bullet.transform.position).normalized;
+            Vector2 direction = (WeaponMovement.PointerPosition - (Vector2)bullet.transform.position).normalized;
 
             // Set the bullet's velocity to move in that direction with a desired speed
             float bulletSpeed = 10f; // Adjust this speed as needed
@@ -62,6 +67,8 @@ public class playermovement : MonoBehaviour
             
             
         }
+
+        
 
     }
 

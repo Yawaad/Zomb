@@ -15,12 +15,12 @@ public class aim : MonoBehaviour
     private Vector2 PointerInput => pointerInput;
 
     // Reference to the WeaponParent component attached to the player.
-    private WeaponParent weaponParent;
+    private WeaponMovement weaponParent;
 
     private void Awake()
     {
         // Find and store the WeaponParent component in the player's children.
-        weaponParent = GetComponentInChildren<WeaponParent>();
+        weaponParent = GetComponentInChildren<WeaponMovement>();
     }
 
     private void Update()
