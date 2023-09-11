@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +12,7 @@ public class playermovement : MonoBehaviour
     WeaponMovement bulletdirection;
     WeaponMovement WeaponMovement;
     GameObject bullet;
+    private Transform characterTransform;
     //to get the bullet prefab for instantiation
     [SerializeField] GameObject BulletPF;
     //to get the posiiton and rotation of the bullet
@@ -28,11 +30,29 @@ public class playermovement : MonoBehaviour
 
         bulletdirection = GetComponent<WeaponMovement>();
         WeaponMovement = GetComponentInChildren<WeaponMovement>();
+        characterTransform = transform;
 
     }
 
+    private void Update()
+    {
+        if (WeaponMovement.Instance != null)
+        {
+            if (WeaponMovement.Instance.flip)
+            {
+                // Rotate the character 180 degrees on the Y-axis
+                characterTransform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            }
+            else
+            {
+                // Reset the rotation on the Y-axis to 0 degrees
+                characterTransform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+        }
+    }
 
-   
+
+
     public void Move(InputAction.CallbackContext button)
     {
         if(button.performed) //if the button for movement is clicked
