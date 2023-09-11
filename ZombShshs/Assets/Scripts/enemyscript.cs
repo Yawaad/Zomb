@@ -9,9 +9,11 @@ public class enemyscript : MonoBehaviour
     [SerializeField] float Speed;
     Rigidbody2D rb;
     public GameObject Target;
+    [SerializeField] public  float Health;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Health =100;
     }
 
     // Update is called once per frame
@@ -30,6 +32,13 @@ public class enemyscript : MonoBehaviour
             rb.velocity = Vector2.zero;
             Debug.Log("player not found");
         }
+
+        if(Health <= 0)
+        {
+            Destroy(gameObject);
+        }
         
     }
+   
+
 }
