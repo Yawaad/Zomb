@@ -76,7 +76,7 @@ public class playermovement : MonoBehaviour
              bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
 
             // Play Sound Effect
-            ShootSFX.Play();
+            
 
             // Calculate the direction from the bullet's position to the pointer position
             Vector2 direction = (WeaponMovement.PointerPosition - (Vector2)bullet.transform.position).normalized;
