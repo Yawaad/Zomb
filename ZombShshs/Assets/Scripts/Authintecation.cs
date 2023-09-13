@@ -2,11 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
 
+
 public class Authintecation : MonoBehaviour
+
+    
 {
     async void Awake()
     {
@@ -46,6 +50,9 @@ public class Authintecation : MonoBehaviour
         };
     }
 
+    
+       
+    
     async Task SignInAnonymouslyAsync()
     {
         try
