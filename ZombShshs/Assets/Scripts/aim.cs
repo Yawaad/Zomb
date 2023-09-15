@@ -25,11 +25,14 @@ public class aim : MonoBehaviour
 
     private void Update()
     {
-        // Get the current pointer input and assign it to pointerInput.
-        pointerInput = GetPointerInput();
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            // Get the current pointer input and assign it to pointerInput.
+            pointerInput = GetPointerInput();
 
-        // Update the PointerPosition property of the weapon parent with the pointer input.
-        weaponParent.PointerPosition = pointerInput;
+            // Update the PointerPosition property of the weapon parent with the pointer input.
+            weaponParent.PointerPosition = pointerInput;
+        }
     }
 
     // Function to retrieve the pointer input.

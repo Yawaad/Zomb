@@ -34,7 +34,8 @@ public class WeaponMovement : MonoBehaviour
 
         }
 
-
+        Direction = new Vector2(LookDirection.x, LookDirection.y);
+        MoveWeapon();
     }
 
     public void MoveWeapon()
@@ -68,6 +69,7 @@ public class WeaponMovement : MonoBehaviour
 
     private void Update()
     {
+        
 
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
         {
@@ -103,9 +105,9 @@ public class WeaponMovement : MonoBehaviour
 
 
 
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.WindowsEditor)
         {
-            Direction = new Vector2(LookDirection.x, LookDirection.y);
+
 
             MoveWeapon();
 

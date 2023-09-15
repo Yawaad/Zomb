@@ -39,6 +39,7 @@ public class playermovement : MonoBehaviour
 
     private void Update()
     {
+
         if (WeaponMovement.Instance != null)
         {
             if (WeaponMovement.Instance.flip)
@@ -62,7 +63,7 @@ public class playermovement : MonoBehaviour
         {
             Vector2 MovementDirection = button.ReadValue<Vector2>().normalized; //get the value in vector2
             rb.velocity = new Vector2(MovementDirection.x, MovementDirection.y).normalized * Speed; //apply movement
-    
+            Debug.Log("Move Direction" + MovementDirection);
         }
         else
         {
