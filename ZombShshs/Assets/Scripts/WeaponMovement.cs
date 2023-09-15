@@ -69,7 +69,7 @@ public class WeaponMovement : MonoBehaviour
     private void Update()
     {
 
-        if (Application.platform == RuntimePlatform.WindowsPlayer)
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
         {
             // Calculate the direction from the weapon's position to the pointer position.
             Direction = (PointerPosition - (Vector2)transform.position).normalized;
@@ -106,6 +106,7 @@ public class WeaponMovement : MonoBehaviour
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             Direction = new Vector2(LookDirection.x, LookDirection.y);
+
             MoveWeapon();
 
             
