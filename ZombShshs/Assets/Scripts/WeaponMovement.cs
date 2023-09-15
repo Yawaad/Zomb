@@ -37,7 +37,7 @@ public class WeaponMovement : MonoBehaviour
 
     }
 
-    public void MooveWeapon()
+    public void MoveWeapon()
     {
         if (LookDirection != Vector2.zero)
         {
@@ -106,9 +106,9 @@ public class WeaponMovement : MonoBehaviour
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             Direction = new Vector2(LookDirection.x, LookDirection.y);
+            MoveWeapon();
 
-
-
+            
         }
 
     }
