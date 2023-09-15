@@ -498,6 +498,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5066154687524467517, guid: bb0328ea13fed8247a3ee7e3cd6fdf10, type: 3}
+      propertyPath: flip
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066154687524467517, guid: bb0328ea13fed8247a3ee7e3cd6fdf10, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
