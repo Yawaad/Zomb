@@ -31,11 +31,40 @@ public class WeaponMovement : MonoBehaviour
         if (button.performed) //if the button for movement is clicked
         {
             LookDirection = button.ReadValue<Vector2>().normalized; //get the value in vector2
-           
+
         }
-        
+
 
     }
+
+    public void MooveWeapon()
+    {
+        if (LookDirection != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(LookDirection.y, LookDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            transform.right = Direction;
+
+            // Get the current scale of the weapon.
+            Vector2 scale = transform.localScale;
+
+            // Check the x-component of the direction to determine the weapon's orientation.
+            if (Direction.x < 0)
+            {
+                // If the x-component is negative, flip the weapon vertically (scale it negatively on the y-axis).
+                scale.y = -1;
+                flip = true;
+            }
+            else if (Direction.x > 0)
+            {
+                // If the x-component is positive, keep the weapon's vertical scale positive.
+                scale.y = 1;
+                flip = false;
+            }
+        }
+    }
+
 
     private void Update()
     {
@@ -77,33 +106,12 @@ public class WeaponMovement : MonoBehaviour
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             Direction = new Vector2(LookDirection.x, LookDirection.y);
-            if (LookDirection != Vector2.zero)
-            {
-                float angle = Mathf.Atan2(LookDirection.y, LookDirection.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-                transform.right = Direction;
 
-                // Get the current scale of the weapon.
-                Vector2 scale = transform.localScale;
 
-                // Check the x-component of the direction to determine the weapon's orientation.
-                if (Direction.x < 0)
-                {
-                    // If the x-component is negative, flip the weapon vertically (scale it negatively on the y-axis).
-                    scale.y = -1;
-                    flip = true;
-                }
-                else if (Direction.x > 0)
-                {
-                    // If the x-component is positive, keep the weapon's vertical scale positive.
-                    scale.y = 1;
-                    flip = false;
-                }
-            }
         }
+
     }
-    
 }
 
        
