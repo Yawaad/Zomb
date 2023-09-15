@@ -12,7 +12,9 @@ public class WeaponMovement : MonoBehaviour
     public bool flip = false;
     public static WeaponMovement Instance { get; private set; }
     playermovement Player;
-    
+    Vector2 LookDirection;
+
+
 
     private void Awake()
     {
@@ -28,7 +30,7 @@ public class WeaponMovement : MonoBehaviour
     {
         if (button.performed) //if the button for movement is clicked
         {
-            Vector2 LookDirection = button.ReadValue<Vector2>().normalized; //get the value in vector2
+            LookDirection = button.ReadValue<Vector2>().normalized; //get the value in vector2
            
         }
         
