@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 9203371125173648269, guid: bb0328ea13fed8247a3ee7e3cd6fdf10, type: 3}
-  Speed: 5
+  Speed: 55.8
   Target: {fileID: 0}
   Health: 100

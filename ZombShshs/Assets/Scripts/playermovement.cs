@@ -20,7 +20,7 @@ public class playermovement : MonoBehaviour
     [SerializeField] Transform BulletDirection;
     [SerializeField] float Speed;
     [SerializeField] AudioSource ShootSFX;
-    
+    Vector2 MovementDirection;
 
 
 
@@ -57,7 +57,7 @@ public class playermovement : MonoBehaviour
     {
         if(button.performed) //if the button for movement is clicked
         {
-            Vector2 MovementDirection = button.ReadValue<Vector2>().normalized; //get the value in vector2
+            MovementDirection = button.ReadValue<Vector2>().normalized; //get the value in vector2
             rb.velocity = new Vector2(MovementDirection.x, MovementDirection.y).normalized * Speed; //apply movement
             
         }
@@ -93,7 +93,20 @@ public class playermovement : MonoBehaviour
 
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.WindowsEditor)
         {
+            if (button.performed)
+            {
+                bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
 
+                // Play Sound Effect
+
+
+                // Calculate the direction from the bullet's position to the pointer position
+                Vector2 direction = new Vector2 (MovementDirection.x, MovementDirection.y).normalized;
+
+                // Set the bullet's velocity to move in that direction with a desired speed
+                float bulletSpeed = 10f; // Adjust this speed as needed
+                bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+            }
         }
 
 

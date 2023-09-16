@@ -23,7 +23,7 @@ public class enemyscript : MonoBehaviour
         {
             Target = GameObject.FindGameObjectWithTag("Player");
             Direction = (Target.transform.position - transform.position).normalized;
-            rb.velocity = Direction * Speed;
+            rb.velocity = Direction * Speed * Time.deltaTime;
 
         }
 
