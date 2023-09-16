@@ -39,16 +39,33 @@ public class playermovement : MonoBehaviour
 
     private void Update()
     {
-
-        if (WeaponMovement.Instance != null)
+        if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
-            if (WeaponMovement.Instance.flip)
+
+            if (WeaponMovement.Instance != null)
             {
-                // Rotate the character 180 degrees on the Y-axis
+                if (WeaponMovement.Instance.flip)
+                {
+                    // Rotate the character 180 degrees on the Y-axis
+                    characterTransform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                }
+
+            }
+        }
+
+
+        else if  (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            if(MovementDirection.x >= 0)
+            {
+                characterTransform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+            else if(MovementDirection.x <= 0) 
+            {
                 characterTransform.rotation = Quaternion.Euler(0f, 180f, 0f);
             }
-           
         }
+        
     }
 
 
@@ -91,23 +108,23 @@ public class playermovement : MonoBehaviour
             }
         }
 
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.WindowsEditor)
-        {
-            if (button.performed)
-            {
-                bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
+        else if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.WindowsEditor)
+             {
+                if (button.performed)
+                {
+                    bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
 
-                // Play Sound Effect
+                    // Play Sound Effect
 
 
-                // Calculate the direction from the bullet's position to the pointer position
-                Vector2 direction = new Vector2 (MovementDirection.x, MovementDirection.y).normalized;
+                    // Calculate the direction from the bullet's position to the pointer position
+                    Vector2 direction = new Vector2 (MovementDirection.x, MovementDirection.y).normalized;
 
-                // Set the bullet's velocity to move in that direction with a desired speed
-                float bulletSpeed = 10f; // Adjust this speed as needed
-                bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+                    // Set the bullet's velocity to move in that direction with a desired speed
+                    float bulletSpeed = 10f; // Adjust this speed as needed
+                    bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+                }
             }
-        }
 
 
 
