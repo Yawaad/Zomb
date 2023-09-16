@@ -47,11 +47,7 @@ public class playermovement : MonoBehaviour
                 // Rotate the character 180 degrees on the Y-axis
                 characterTransform.rotation = Quaternion.Euler(0f, 180f, 0f);
             }
-            else
-            {
-                // Reset the rotation on the Y-axis to 0 degrees
-                characterTransform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            }
+           
         }
     }
 
@@ -63,7 +59,7 @@ public class playermovement : MonoBehaviour
         {
             Vector2 MovementDirection = button.ReadValue<Vector2>().normalized; //get the value in vector2
             rb.velocity = new Vector2(MovementDirection.x, MovementDirection.y).normalized * Speed; //apply movement
-            Debug.Log("Move Direction" + MovementDirection);
+            
         }
         else
         {
@@ -74,25 +70,33 @@ public class playermovement : MonoBehaviour
 
     public void shoot(InputAction.CallbackContext button)
     {
-        if (button.performed)
+        if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
-            // Instantiate the bullet
-             bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
+            if (button.performed)
+            {
+                // Instantiate the bullet
+                bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
 
-            // Play Sound Effect
-            
+                // Play Sound Effect
 
-            // Calculate the direction from the bullet's position to the pointer position
-            Vector2 direction = (WeaponMovement.PointerPosition - (Vector2)bullet.transform.position).normalized;
 
-            // Set the bullet's velocity to move in that direction with a desired speed
-            float bulletSpeed = 10f; // Adjust this speed as needed
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-            
-            
+                // Calculate the direction from the bullet's position to the pointer position
+                Vector2 direction = (WeaponMovement.PointerPosition - (Vector2)bullet.transform.position).normalized;
+
+                // Set the bullet's velocity to move in that direction with a desired speed
+                float bulletSpeed = 10f; // Adjust this speed as needed
+                bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+
+
+            }
         }
 
-        
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+
+        }
+
+
 
     }
 

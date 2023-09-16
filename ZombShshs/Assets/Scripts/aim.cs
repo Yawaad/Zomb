@@ -25,7 +25,7 @@ public class aim : MonoBehaviour
 
     private void Update()
     {
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsPlayer )
         {
             // Get the current pointer input and assign it to pointerInput.
             pointerInput = GetPointerInput();

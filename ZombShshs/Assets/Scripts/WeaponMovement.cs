@@ -63,6 +63,7 @@ public class WeaponMovement : MonoBehaviour
                 scale.y = 1;
                 flip = false;
             }
+            transform.localScale = scale;
         }
     }
 
@@ -71,7 +72,7 @@ public class WeaponMovement : MonoBehaviour
     {
         
 
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsPlayer )
         {
             // Calculate the direction from the weapon's position to the pointer position.
             Direction = (PointerPosition - (Vector2)transform.position).normalized;
