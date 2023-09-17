@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject Enemy;
+    [SerializeField] float spawnRate = 5; 
     private void Start()
     {
-        InvokeRepeating("SpawnEnemy", 0, 1f); 
+        InvokeRepeating("SpawnEnemy", 0, spawnRate); 
     }
     void SpawnEnemy()
     {

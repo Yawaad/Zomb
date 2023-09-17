@@ -22,6 +22,11 @@ public class playermovement : MonoBehaviour
     [SerializeField] AudioSource ShootSFX;
     Vector2 MovementDirection;
 
+    public float KBForce;
+    public float KBCounter;
+    public float KBTotalTime;
+    public bool KnockFromRight;
+    public bool KnockFromUp;
 
 
     void Start()
@@ -39,6 +44,8 @@ public class playermovement : MonoBehaviour
 
     private void Update()
     {
+        //KnockBack();
+        
         if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
 
@@ -65,10 +72,35 @@ public class playermovement : MonoBehaviour
                 characterTransform.rotation = Quaternion.Euler(0f, 180f, 0f);
             }
         }
+
         
+
     }
 
+    //private void KnockBack()
+    //{
+    //    if (KBCounter > 0)
+    //    {
+    //        if (KnockFromRight == false)
+    //        {
+    //            rb.velocity = new Vector2(-KBForce, KBForce);
+    //        }
+    //        if (KnockFromRight == true)
+    //        {
+    //            rb.velocity = new Vector2(KBForce, KBForce);
+    //        }
+    //        if (KnockFromUp == false)
+    //        {
+    //            rb.velocity = new Vector2(KBForce, -KBForce);
+    //        }
+    //        if (KnockFromUp == true)
+    //        {
+    //            rb.velocity = new Vector2(KBForce, KBForce);
+    //        }
 
+    //        KBCounter -= Time.deltaTime;
+    //    }
+    //}
 
     public void Move(InputAction.CallbackContext button)
     {
