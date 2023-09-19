@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    /*
     Rigidbody2D rb;
 
     public int maxHealth = 100;
@@ -50,4 +51,5 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
+    */
 }
