@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
@@ -17,4 +19,13 @@ public class UIHandler : MonoBehaviour
         LeanTween.moveLocalY(QuitButton, -164.4291f, 1.5f).setDelay(1f).setEase(LeanTweenType.easeOutCubic);
     }
 
+    public void CampaignMode()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
