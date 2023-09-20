@@ -161,7 +161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 27.1053}
+  m_AnchoredPosition: {x: 994, y: 27.1053}
   m_SizeDelta: {x: 183.3755, y: 363.1649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107671609
@@ -207,19 +207,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 107671610}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 343340664}
-        m_TargetAssemblyTypeName: UIHandler, Assembly-CSharp
-        m_MethodName: CampaignMode
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &107671610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,11 +381,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e337aec07458ec7488e92a3826292af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenu: {fileID: 565228518}
   PlayButton: {fileID: 1627153688}
   ShopButton: {fileID: 1604671358}
   OptionsButton: {fileID: 1443424592}
   PatchesButton: {fileID: 1020889120}
   QuitButton: {fileID: 2052630493}
+  PlaySelectionPanel: {fileID: 1912109421}
+  Campaign: {fileID: 107671607}
+  Infinite: {fileID: 1339191401}
+  Multiplayer: {fileID: 1100597316}
 --- !u!4 &343340665
 Transform:
   m_ObjectHideFlags: 0
@@ -1060,7 +1053,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 27.1053}
+  m_AnchoredPosition: {x: 694, y: 27.1053}
   m_SizeDelta: {x: 183.3754, y: 363.1649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1100597318
@@ -1303,31 +1296,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1195560805}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 565228518}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1912109421}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1195560805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,7 +1467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 27.1053}
+  m_AnchoredPosition: {x: 843.99994, y: 27.1053}
   m_SizeDelta: {x: 183.3755, y: 363.1649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1339191403
@@ -1544,7 +1513,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1339191404}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 343340664}
+        m_TargetAssemblyTypeName: UIHandler, Assembly-CSharp
+        m_MethodName: InfiniteMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1339191404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2209,22 +2190,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1912109421}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 565228518}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 343340664}
+        m_TargetAssemblyTypeName: UIHandler, Assembly-CSharp
+        m_MethodName: PlayMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3269,6 +3238,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1947783513}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 343340664}
+        m_TargetAssemblyTypeName: UIHandler, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
