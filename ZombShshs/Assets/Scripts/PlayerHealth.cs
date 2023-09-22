@@ -1,55 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PlayerHealth : MonoBehaviour
+     
 {
-    /*
-    Rigidbody2D rb;
+    
+     Rigidbody2D rb;
 
-    public int maxHealth = 100;
-    public int currentHealth;
+     public float MaxHealth = 100;
+     public float CurrentHealth;
 
-    public HealthBar healthBar;
-    public playermovement playermovement;
+     public HealthBar HealthBar;
+      playermovement Playermovement;
 
-    [SerializeField] float knockbackPower = 5.0f; 
+     [SerializeField] float KnockBackPower = 5.0f; 
 
-    public bool knockBackStop = false;
-    [SerializeField] float knockBackStopTime = 0.5f;
+     public bool KnockBack = false;
+     [SerializeField] float KnockBackStopTime = 3f;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
-        healthBar.SetMaxhealth(maxHealth);
-    }
+     void Start()
+     {
+         rb = GetComponent<Rigidbody2D>();
+         CurrentHealth = MaxHealth;
+         HealthBar.SetMaxhealth(MaxHealth);
+     }
 
+
+   
+
+    
+
+     void TakeDamage(int damage)
+     {
+         CurrentHealth -= damage;
+         HealthBar.SetHealth(CurrentHealth);
+     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Vector2 knockbackDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-            rb.velocity = knockbackDirection * knockbackPower;
 
-            TakeDamage(20);
+            Debug.Log("Function started"); // Add this to key parts of your script to see if they are executed.
+            //TakeDamage(20);
 
-            knockBackStop=true;
+            
+
+
+            StartCoroutine(ApplyKnockBack());
+
+            
         }
+       
     }
-
-    private void Update()
+    IEnumerator ApplyKnockBack()
     {
-        if (!knockBackStop)
-        {
-            rb.velocity = Vector2.zero;
-        }
+        Vector2 KnockBackDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        rb.AddForce(KnockBackDirection * KnockBackPower, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(KnockBackStopTime);
+        KnockBack = false;
+        rb.velocity = Vector2.zero;
+        Debug.Log("Function Ended");
     }
-
-    void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
-    }
-    */
+    
+    
 }
