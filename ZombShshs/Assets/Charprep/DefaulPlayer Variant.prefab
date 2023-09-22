@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4377837937471018857, guid: 55b1fcd384f338245910b66dd139fc28, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4377837937471018857, guid: 55b1fcd384f338245910b66dd139fc28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -144,6 +144,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dash
       objectReference: {fileID: 0}
+    - target: {fileID: 5854276656853219643, guid: 55b1fcd384f338245910b66dd139fc28, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -667
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854276656853219643, guid: 55b1fcd384f338245910b66dd139fc28, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -248
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967743322534029353, guid: 55b1fcd384f338245910b66dd139fc28, type: 3}
+      propertyPath: m_MovementRange
+      value: 103.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967743322534029353, guid: 55b1fcd384f338245910b66dd139fc28, type: 3}
+      propertyPath: m_DynamicOriginRange
+      value: 304.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967743322534029353, guid: 55b1fcd384f338245910b66dd139fc28, type: 3}
+      propertyPath: m_UseIsolatedInputActions
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7248372107354043672, guid: 55b1fcd384f338245910b66dd139fc28, type: 3}
       propertyPath: m_Name
       value: DefaulPlayer Variant
@@ -221,7 +241,8 @@ PrefabInstance:
       value: 0.48
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2064104066786456367, guid: 55b1fcd384f338245910b66dd139fc28, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7248372107354043672, guid: 55b1fcd384f338245910b66dd139fc28, type: 3}
@@ -247,8 +268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealAbility: {fileID: 6568794243136445756}
   CoolDown: 0
-  DashPower: 55
-  speed: 120
+  DashPower: 10
+  speed: 10
 --- !u!114 &6568794243136445756 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7482963108522606871, guid: 55b1fcd384f338245910b66dd139fc28, type: 3}
