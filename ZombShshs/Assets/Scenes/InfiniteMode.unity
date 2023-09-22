@@ -307,7 +307,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816472166}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b4c7d19b89eda448a6f99b98ef8b025, type: 3}
   m_Name: 
@@ -329,7 +329,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1425818946
+--- !u!1001 &1234319369
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -337,6 +337,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8963178859708051852, guid: a5b7305982c048e4da0574281a34f484, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8963178859708051852, guid: a5b7305982c048e4da0574281a34f484, type: 3}
+      propertyPath: DashPower
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 13771020701846338, guid: a5b7305982c048e4da0574281a34f484, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -385,8 +393,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefaulPlayer Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6648365702722696194, guid: a5b7305982c048e4da0574281a34f484, type: 3}
+      propertyPath: m_MovementRange
+      value: 103.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648365702722696194, guid: a5b7305982c048e4da0574281a34f484, type: 3}
+      propertyPath: m_DynamicOriginRange
+      value: 304.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648365702722696194, guid: a5b7305982c048e4da0574281a34f484, type: 3}
+      propertyPath: m_UseIsolatedInputActions
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912623718835709200, guid: a5b7305982c048e4da0574281a34f484, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912623718835709200, guid: a5b7305982c048e4da0574281a34f484, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -248
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2329754591734689540, guid: a5b7305982c048e4da0574281a34f484, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5b7305982c048e4da0574281a34f484, type: 3}

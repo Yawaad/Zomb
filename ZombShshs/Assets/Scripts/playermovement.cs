@@ -20,7 +20,7 @@ public class playermovement : MonoBehaviour
     [SerializeField] Transform BulletDirection;
     [SerializeField] float Speed;
     [SerializeField] AudioSource ShootSFX;
-    Vector2 MovementDirection;
+    public Vector2 MovementDirection;
 
     public float KBForce;
     public float KBCounter;
@@ -106,7 +106,7 @@ public class playermovement : MonoBehaviour
     {
         if(button.performed) //if the button for movement is clicked
         {
-            MovementDirection = button.ReadValue<Vector2>().normalized; //get the value in vector2
+            MovementDirection = button.ReadValue<Vector2>(); //get the value in vector2
             rb.velocity = new Vector2(MovementDirection.x, MovementDirection.y).normalized * Speed; //apply movement
             
         }

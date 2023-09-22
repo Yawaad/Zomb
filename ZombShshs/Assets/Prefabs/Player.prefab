@@ -1089,6 +1089,7 @@ MonoBehaviour:
   BulletDirection: {fileID: 7618560939818269245}
   Speed: 7.5
   ShootSFX: {fileID: 0}
+  MovementDirection: {x: 0, y: 0}
   KBForce: 0
   KBCounter: 0
   KBTotalTime: 0
@@ -1220,6 +1221,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: d0e4efc2-1001-490a-a3d2-25d9c5e30ad2
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 25377235-db7f-4f9a-a74f-2020d03c96b5
+    m_ActionName: Player/Dash
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1320,6 +1325,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b3e2979e7e1d84a82fef371b202439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 100
+  CurrentHealth: 0
+  HealthBar: {fileID: 0}
+  KnockBackPower: 5
+  KnockBack: 0
+  KnockBackStopTime: 3
 --- !u!1 &8828083273993877975
 GameObject:
   m_ObjectHideFlags: 0

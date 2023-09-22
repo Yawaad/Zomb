@@ -12,7 +12,7 @@ public class WeaponMovement : MonoBehaviour
     public bool flip = false;
     public static WeaponMovement Instance { get; private set; }
     playermovement Player;
-    Vector2 LookDirection;
+     Vector2 LookDirection;
 
 
 
