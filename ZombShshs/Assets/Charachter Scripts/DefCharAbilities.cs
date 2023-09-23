@@ -8,13 +8,20 @@ using UnityEngine.UI;
 public class DefCharAbilities : MonoBehaviour
 
 {
-    GameObject bullet;
-    private Transform characterTransform;
-    //to get the bullet prefab for instantiation
+
+    WeaponMovement WeaponMovement;
     [SerializeField] GameObject BulletPF;
-    //to get the posiiton and rotation of the bullet
     [SerializeField] Transform WeaponEnd;
     [SerializeField] Transform BulletDirection;
+    GameObject bullet;
+    playermovement PlayerMovement;
+
+
+    private Transform characterTransform;
+    //to get the bullet prefab for instantiation
+    
+    //to get the posiiton and rotation of the bullet
+    
     [SerializeField] float Speed;
     [SerializeField] AudioSource ShootSFX;
     public Vector2 MovementDirection;
@@ -27,7 +34,7 @@ public class DefCharAbilities : MonoBehaviour
     public bool KnockFromUp;*/
 
 
-    WeaponMovement WeaponMovement;
+    
     [SerializeField] Button HealAbility;
     [SerializeField] float CoolDown;
     PlayerHealth Player;
@@ -44,10 +51,11 @@ public class DefCharAbilities : MonoBehaviour
     {
 
         
-        WeaponMovement = GetComponentInChildren<WeaponMovement>();
+        
         Player = GetComponent<PlayerHealth>();
         RB = GetComponent<Rigidbody2D>();
-        
+        WeaponMovement = GetComponentInChildren<WeaponMovement>();
+
         characterTransform = transform;
 
 
@@ -130,11 +138,12 @@ public class DefCharAbilities : MonoBehaviour
         }
 
     }
-    public void Shoot(InputAction.CallbackContext button)
+
+    public void shoot(InputAction.CallbackContext button)
     {
         if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
-            if (button.performed )
+            if (button.performed)
             {
                 // Instantiate the bullet
                 bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
@@ -162,8 +171,8 @@ public class DefCharAbilities : MonoBehaviour
                 // Play Sound Effect
 
 
-                
-                
+
+
 
                 // Set the bullet's velocity to move in that direction with a desired speed
                 float bulletSpeed = 10f; // Adjust this speed as needed
