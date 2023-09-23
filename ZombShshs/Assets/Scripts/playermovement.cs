@@ -9,7 +9,7 @@ public class playermovement : MonoBehaviour
 {
 
     Rigidbody2D rb;
-    WeaponMovement bulletdirection;
+    
     WeaponMovement WeaponMovement;
     GameObject bullet;
     private Transform characterTransform;
@@ -21,6 +21,7 @@ public class playermovement : MonoBehaviour
     [SerializeField] float Speed;
     [SerializeField] AudioSource ShootSFX;
     public Vector2 MovementDirection;
+    public Vector2 MovementSpeed;
 
     public float KBForce;
     public float KBCounter;
@@ -33,9 +34,10 @@ public class playermovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        bulletdirection = GetComponent<WeaponMovement>();
+        
         WeaponMovement = GetComponentInChildren<WeaponMovement>();
         characterTransform = transform;
+        
         
 
 
@@ -58,6 +60,7 @@ public class playermovement : MonoBehaviour
                 }
 
             }
+
         }
 
 
@@ -73,8 +76,8 @@ public class playermovement : MonoBehaviour
             }
         }
 
-        
 
+        MovementSpeed = rb.velocity;
     }
 
     //private void KnockBack()
@@ -108,7 +111,7 @@ public class playermovement : MonoBehaviour
         {
             MovementDirection = button.ReadValue<Vector2>(); //get the value in vector2
             rb.velocity = new Vector2(MovementDirection.x, MovementDirection.y).normalized * Speed; //apply movement
-            
+            MovementSpeed = rb.velocity;
         }
         else
         {

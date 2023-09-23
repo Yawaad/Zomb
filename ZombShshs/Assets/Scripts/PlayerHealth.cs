@@ -49,13 +49,13 @@ public class PlayerHealth : MonoBehaviour
             
 
 
-            StartCoroutine(ApplyKnockBack());
+            //StartCoroutine(ApplyKnockBack());
 
             
         }
        
     }
-    IEnumerator ApplyKnockBack()
+    /*IEnumerator ApplyKnockBack()
     {
         Vector2 KnockBackDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         rb.AddForce(KnockBackDirection * KnockBackPower, ForceMode2D.Impulse);
@@ -64,6 +64,6 @@ public class PlayerHealth : MonoBehaviour
         rb.velocity = Vector2.zero;
         Debug.Log("Function Ended");
     }
-    
+    */
     
 }
