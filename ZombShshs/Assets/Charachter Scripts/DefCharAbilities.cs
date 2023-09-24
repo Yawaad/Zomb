@@ -74,7 +74,7 @@ public class DefCharAbilities : MonoBehaviour
     }
     private void Update()
     {
-
+        
 
         //KnockBack();
 
@@ -170,10 +170,11 @@ public class DefCharAbilities : MonoBehaviour
         StartCoroutine(ReduceCoolDown(button));
     }
 
-   
+
+    
 
     //The Healing Ability.
-    public void Heal()
+    public void Heal(Button Button)
     {
         //Prevents the ability from being treggered if the player health is full.
         if (Player.CurrentHealth != Player.MaxHealth)
@@ -183,10 +184,15 @@ public class DefCharAbilities : MonoBehaviour
             //Applies Cooldown.
             CoolDown = 5;
         }
-       
-        
+
+        if (Player.CurrentHealth == Player.MaxHealth)
+        {
+            Button.enabled = false;
+            CoolDown = 0.5f;
+        }
+
         //Prevents the player's health from exceeding the max health.
-        if(Player.CurrentHealth > Player.MaxHealth)
+        if (Player.CurrentHealth > Player.MaxHealth)
         {
             Player.CurrentHealth = Player.MaxHealth;
         }
@@ -230,6 +236,7 @@ public class DefCharAbilities : MonoBehaviour
         AttackSpeed.ShootingRate = 1;
         Debug.Log("Ability Ended");
     }
+  
 }
 
 

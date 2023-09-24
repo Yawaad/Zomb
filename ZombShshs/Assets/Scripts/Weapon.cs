@@ -22,7 +22,7 @@ public class Weapon : MonoBehaviour
     //Time between shots
     public float ShootingRate = 1f;
     //Time when Player can shoot again
-    public float Nextshoot;
+     float Nextshoot;
 
 
     // this is to store the position of the pointer (used to aim the weapon).
