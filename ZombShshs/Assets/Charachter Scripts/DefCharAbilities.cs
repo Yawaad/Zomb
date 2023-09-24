@@ -9,22 +9,20 @@ public class DefCharAbilities : MonoBehaviour
 
 {
 
-    WeaponMovement WeaponMovement;
-    [SerializeField] GameObject BulletPF;
-    [SerializeField] Transform WeaponEnd;
-    [SerializeField] Transform BulletDirection;
-    GameObject bullet;
-    playermovement PlayerMovement;
+    
 
-
+    //This will Help in Rotating the player
     private Transform characterTransform;
-    //to get the bullet prefab for instantiation
     
-    //to get the posiiton and rotation of the bullet
     
+    
+    //the Speed the player moves in.
     [SerializeField] float Speed;
+
     [SerializeField] AudioSource ShootSFX;
+    //To Store the Movement Direction
     public Vector2 MovementDirection;
+    //To Store the Movement Speed
     public Vector2 MovementSpeed;
 
    /* public float KBForce;
@@ -35,17 +33,31 @@ public class DefCharAbilities : MonoBehaviour
 
 
     
-    [SerializeField] Button HealAbility;
+    //Cooldown for the charachterAbilities
     [SerializeField] float CoolDown;
+
+    //To Access the Player Health for the Healing Ability
     PlayerHealth Player;
+
+    //Controls the Dashing ability's power
     [SerializeField] float DashPower = 5;
     
-    [SerializeField] float speed;
+   
+
+    //Controls the Dash Duration
     float DashCounter = 0.5f;
+
+    //To controls the number of dashes to prevent Spamming (Has other Uses too!)
     int Dashes = 1;
+
     Rigidbody2D RB;
+
+    //Controls if the Player can move or not
     bool CanMove = true;
-    
+
+     Weapon Weapon;
+    [SerializeField] GameObject UsedWeapon;
+    Weapon AttackSpeed;
 
     void Start()
     {
@@ -54,10 +66,10 @@ public class DefCharAbilities : MonoBehaviour
         
         Player = GetComponent<PlayerHealth>();
         RB = GetComponent<Rigidbody2D>();
-        WeaponMovement = GetComponentInChildren<WeaponMovement>();
+        Weapon = GetComponent<Weapon>();
 
         characterTransform = transform;
-
+        AttackSpeed =  UsedWeapon.GetComponent<Weapon>();
 
     }
     private void Update()
@@ -66,14 +78,15 @@ public class DefCharAbilities : MonoBehaviour
 
         //KnockBack();
 
+        //for PC
         if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
 
-            if (WeaponMovement.Instance != null)
+            if (Weapon.Instance != null)
             {
-                if (WeaponMovement.Instance.flip)
+                if (Weapon.Instance.flip)
                 {
-                    // Rotate the character 180 degrees on the Y-axis
+                    // Rotate the character 180 degrees on the Y-axis to look in the opposite direction (if right, it will look left etc...,)
                     characterTransform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 }
 
@@ -81,13 +94,15 @@ public class DefCharAbilities : MonoBehaviour
 
         }
 
-
+        //For Mobile
         else if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.WindowsEditor)
         {
+            //If player is moving in the positive direction(right), Look right.
             if (MovementDirection.x >= 0)
             {
                 characterTransform.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
+            //If player is moving in the negative direction(left), Look left.
             else if (MovementDirection.x <= 0)
             {
                 characterTransform.rotation = Quaternion.Euler(0f, 180f, 0f);
@@ -99,7 +114,7 @@ public class DefCharAbilities : MonoBehaviour
 
 
 
-
+        //If the dash ability is triggered, starts the ability.
         if (DashCounter>0 && Dashes == 0)
         {
             DashCounter-= Time.deltaTime;
@@ -108,7 +123,7 @@ public class DefCharAbilities : MonoBehaviour
             CanMove = false;
         }
         
-
+        //when the Dash finished go back to normal movement speed and reset the ability
         if (DashCounter <= 0)
         {
             RB.velocity = MovementSpeed;
@@ -116,21 +131,21 @@ public class DefCharAbilities : MonoBehaviour
             Dashes = 1;
             CanMove = true;
         }
-        Debug.Log("Can Move" + CanMove );
+        
         
     }
 
 
 
 
-
+    //Handles Player movement
     public void Move(InputAction.CallbackContext button)
     {
         if (button.performed && CanMove == true) //if the button for movement is clicked
         {
-            MovementDirection = button.ReadValue<Vector2>(); //get the value in vector2
-            MovementSpeed = new Vector2(MovementDirection.x, MovementDirection.y).normalized * Speed; //apply movement
-            RB.velocity = MovementSpeed;
+            MovementDirection = button.ReadValue<Vector2>(); //get the value in vector2.
+            MovementSpeed = new Vector2(MovementDirection.x, MovementDirection.y).normalized * Speed; //Calculates the movement speed.
+            RB.velocity = MovementSpeed;//apply movement
         }
         else
         {
@@ -139,56 +154,7 @@ public class DefCharAbilities : MonoBehaviour
 
     }
 
-    public void shoot(InputAction.CallbackContext button)
-    {
-        if (Application.platform == RuntimePlatform.WindowsPlayer)
-        {
-            if (button.performed)
-            {
-                // Instantiate the bullet
-                bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
-
-                // Play Sound EffectS
-
-
-                // Calculate the direction from the bullet's position to the pointer position
-                Vector2 direction = (WeaponMovement.PointerPosition - (Vector2)bullet.transform.position).normalized;
-
-                // Set the bullet's velocity to move in that direction with a desired speed
-                float bulletSpeed = 10f; // Adjust this speed as needed
-                bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-
-
-            }
-        }
-
-        else if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.WindowsEditor)
-        {
-            if (button.performed)
-            {
-                bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
-
-                // Play Sound Effect
-
-
-
-
-
-                // Set the bullet's velocity to move in that direction with a desired speed
-                float bulletSpeed = 10f; // Adjust this speed as needed
-                bullet.GetComponent<Rigidbody2D>().velocity = MovementDirection * bulletSpeed;
-            }
-        }
-
-
-
-    }
-
-    public void ApplyCoolDown(Button button)
-    {
-        StartCoroutine(ReduceCoolDown(button));
-    }
-
+    //Makes CoolDown for abilities
     IEnumerator ReduceCoolDown(Button button)
     {
 
@@ -198,19 +164,28 @@ public class DefCharAbilities : MonoBehaviour
 
     }
 
+    //Applys the cooldown.
+    public void ApplyCoolDown(Button button)
+    {
+        StartCoroutine(ReduceCoolDown(button));
+    }
 
+   
+
+    //The Healing Ability.
     public void Heal()
     {
+        //Prevents the ability from being treggered if the player health is full.
         if (Player.CurrentHealth != Player.MaxHealth)
         {
-            
+            //The Healing effect.
             Player.CurrentHealth += Player.MaxHealth * 0.25f;
-            
+            //Applies Cooldown.
             CoolDown = 5;
         }
        
         
-
+        //Prevents the player's health from exceeding the max health.
         if(Player.CurrentHealth > Player.MaxHealth)
         {
             Player.CurrentHealth = Player.MaxHealth;
@@ -222,11 +197,12 @@ public class DefCharAbilities : MonoBehaviour
     
 
    
-   
+   //The Dahs Ability(the logic is in the update function. this just triggers it.)
     public void Dash()
     {
         if(DashCounter>0)
         {
+            Debug.Log("Dash started");
             CoolDown = 7;
             Dashes -= 1;
             
@@ -236,7 +212,24 @@ public class DefCharAbilities : MonoBehaviour
         
         
     }
-   
+
+
+    public void AdrinalineRush()
+    {
+        CoolDown = 7;
+        StartCoroutine(IncreaseSpeedandShooting());
+    }
+
+    IEnumerator IncreaseSpeedandShooting()
+    {
+        Debug.Log("Ability started");
+        Speed = Speed * 1.5f;
+        AttackSpeed.ShootingRate = 0.5f;
+        yield return new WaitForSeconds(3);
+        Speed = 7.5f;
+        AttackSpeed.ShootingRate = 1;
+        Debug.Log("Ability Ended");
+    }
 }
 
 

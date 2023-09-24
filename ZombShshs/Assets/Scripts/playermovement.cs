@@ -10,14 +10,11 @@ public class playermovement : MonoBehaviour
 
     Rigidbody2D rb;
     
-    WeaponMovement WeaponMovement;
+    Weapon Weapon;
     GameObject bullet;
     private Transform characterTransform;
     //to get the bullet prefab for instantiation
-    [SerializeField] GameObject BulletPF;
-    //to get the posiiton and rotation of the bullet
-    [SerializeField] Transform WeaponEnd;
-    [SerializeField] Transform BulletDirection;
+   
     [SerializeField] float Speed;
     [SerializeField] AudioSource ShootSFX;
     public Vector2 MovementDirection;
@@ -35,7 +32,7 @@ public class playermovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         
-        WeaponMovement = GetComponentInChildren<WeaponMovement>();
+        Weapon = GetComponentInChildren<Weapon>();
         characterTransform = transform;
         
         
@@ -51,9 +48,9 @@ public class playermovement : MonoBehaviour
         if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
 
-            if (WeaponMovement.Instance != null)
+            if (Weapon.Instance != null)
             {
-                if (WeaponMovement.Instance.flip)
+                if (Weapon.Instance.flip)
                 {
                     // Rotate the character 180 degrees on the Y-axis
                     characterTransform.rotation = Quaternion.Euler(0f, 180f, 0f);
@@ -120,50 +117,7 @@ public class playermovement : MonoBehaviour
         
     }
 
-    public void shoot(InputAction.CallbackContext button)
-    {
-        if (Application.platform == RuntimePlatform.WindowsPlayer)
-        {
-            if (button.performed)
-            {
-                // Instantiate the bullet
-                bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
-
-                // Play Sound Effect
-
-
-                // Calculate the direction from the bullet's position to the pointer position
-                Vector2 direction = (WeaponMovement.PointerPosition - (Vector2)bullet.transform.position).normalized;
-
-                // Set the bullet's velocity to move in that direction with a desired speed
-                float bulletSpeed = 10f; // Adjust this speed as needed
-                bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-
-
-            }
-        }
-
-        else if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.WindowsEditor)
-             {
-                if (button.performed)
-                {
-                    bullet = Instantiate(BulletPF, WeaponEnd.position, BulletDirection.rotation);
-
-                    // Play Sound Effect
-
-
-                    // Calculate the direction from the bullet's position to the pointer position
-                    Vector2 direction = new Vector2 (MovementDirection.x, MovementDirection.y).normalized;
-
-                    // Set the bullet's velocity to move in that direction with a desired speed
-                    float bulletSpeed = 10f; // Adjust this speed as needed
-                    bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-                }
-            }
-
-
-
-    }
+  
 
 
     
