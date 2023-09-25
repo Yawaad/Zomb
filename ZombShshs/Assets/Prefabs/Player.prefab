@@ -104,9 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9559ebc3e5bff4eaa724894f581732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPF: {fileID: 860769962901709881, guid: db67d33b18b5a124c8f1eb1fc5f94a90, type: 3}
-  WeaponEnd: {fileID: 270197979497985240}
-  BulletDirection: {fileID: 8835615601293266898}
   Speed: 7.5
   ShootSFX: {fileID: 0}
   MovementDirection: {x: 0, y: 0}
@@ -502,11 +499,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e82885bbb8b36c24e9de3f30f74318f5, type: 3}
---- !u!4 &270197979497985240 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5248848043853123400, guid: e82885bbb8b36c24e9de3f30f74318f5, type: 3}
-  m_PrefabInstance: {fileID: 5433673064562817936}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8737506621348814979 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3614581974116686611, guid: e82885bbb8b36c24e9de3f30f74318f5, type: 3}
