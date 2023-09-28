@@ -9,7 +9,7 @@ public class UIHandler : MonoBehaviour
 {
 
     [SerializeField] GameObject MainMenu, PlayButton, ShopButton, OptionsButton, PatchesButton, QuitButton, PlaySelectionPanel,
-        Campaign, Infinite, Multiplayer;
+        Campaign, Infinite, Multiplayer, PlayBack;
 
     // Start is called before the first frame update
     void Start()
@@ -34,20 +34,22 @@ public class UIHandler : MonoBehaviour
         LeanTween.moveLocalX(Campaign, -572f, 2f).setDelay(2.25f).setEase(LeanTweenType.easeOutCubic);
         LeanTween.moveLocalX(Infinite, 0f, 2f).setDelay(2.5f).setEase(LeanTweenType.easeOutCubic);
         LeanTween.moveLocalX(Multiplayer, 572f, 2f).setDelay(2.75f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.moveLocalY(PlayBack, -446f, 2f).setDelay(2.5f).setEase(LeanTweenType.easeOutCubic);
     }
 
     public void PlayToMenu()
     {
-        Invoke(nameof(MainMenuOn), 2.75f);
-        Invoke(nameof(PlayMenuOff), 2.75f);
-        LeanTween.moveLocalY(PlayButton, -723f, 1.5f).setDelay(2.95f).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.moveLocalY(ShopButton, -842.312f, 1.5f).setDelay(3.15f).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.moveLocalY(OptionsButton, -961.624f, 1.5f).setDelay(3.35f).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.moveLocalY(PatchesButton, -1080.936f, 1.5f).setDelay(3.55f).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.moveLocalY(QuitButton, -1200.248f, 1.5f).setDelay(3.75f).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.moveLocalX(Campaign, 2308f, 2f).setDelay(.25f).setEase(LeanTweenType.easeOutCubic);
+        Invoke(nameof(MainMenuOn), 2.5f);
+        Invoke(nameof(PlayMenuOff), 2.5f);
+        LeanTween.moveLocalY(PlayButton, 114f, 1.5f).setDelay(2.75f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.moveLocalY(ShopButton, -5.311989f, 1.5f).setDelay(2.95f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.moveLocalY(OptionsButton, -124.624f, 1.5f).setDelay(3.15f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.moveLocalY(PatchesButton, -243.9361f, 1.5f).setDelay(3.35f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.moveLocalY(QuitButton, -363.2482f, 1.5f).setDelay(3.55f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.moveLocalX(Campaign, 1348f, 2f).setDelay(.75f).setEase(LeanTweenType.easeOutCubic);
         LeanTween.moveLocalX(Infinite, 1920f, 2f).setDelay(.5f).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.moveLocalX(Multiplayer, 1532f, 2f).setDelay(.75f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.moveLocalX(Multiplayer, 2492f, 2f).setDelay(.25f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.moveLocalY(PlayBack, -690f, 2f).setDelay(.5f).setEase(LeanTweenType.easeOutCubic);
     }
     public void InfiniteMode()
     {
